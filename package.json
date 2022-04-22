@@ -1,10 +1,10 @@
 {
   "name": "magic-env",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "package to set environment fast",
-  "main": "index.js",
+  "main": "./lib/main.js",
   "bin": {
-    "magic-env": "./src/main.ts"
+    "magic-env": "./lib/main.js"
   },
   "scripts": {
     "build": "tsc",
