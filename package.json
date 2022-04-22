@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "package to set environment fast",
   "main": "./lib/main.js",
+  "types": "./lib/main.d.ts",
   "bin": {
     "magic-env": "./lib/main.js"
   },
