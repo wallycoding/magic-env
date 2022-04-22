@@ -1,0 +1,38 @@
+{
+  "name": "magic-env",
+  "version": "1.0.0",
+  "description": "package to set environment fast",
+  "main": "index.js",
+  "bin": {
+    "magic-env": "./src/main.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --no-cache"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wallycoding/magic-env.git"
+  },
+  "keywords": [
+    "typescript",
+    "env",
+    "back-end"
+  ],
+  "author": "wallycoding",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wallycoding/magic-env/issues"
+  },
+  "homepage": "https://github.com/wallycoding/magic-env#readme",
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.4",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "@types/node": "^17.0.25"
+  }
+}
