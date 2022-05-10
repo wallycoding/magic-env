@@ -15,8 +15,8 @@ const functions: any = {
     replaceLine(params.path, `${params.key}="${uuid}"`, params.index);
     return uuid;
   },
-  database(params: DefaultParams, [db, user, password, query = ""]: string[]) {
-    const url = `${db}://${user}:${password}@localhost:5432/${query}`;
+  prisma(params: DefaultParams, [db, user, password, host, port, query = ""]: string[]) {
+    const url = `${db}://${user}:${password}@${host}:${port}/${query}`;
     replaceLine(params.path, `${params.key}="${url}"`, params.index);
     return url;
   },
