@@ -1,6 +1,6 @@
 {
   "name": "magic-env",
-  "version": "2.3.6",
+  "version": "2.3.7",
   "description": "package to set environment fast",
   "main": "./lib/main.js",
   "types": "./lib/main.d.ts",
