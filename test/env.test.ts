@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import path from "node:path";
+import crypto from "node:crypto";
 import * as lib from "../src/main";
 
 describe("all checks useEnv", () => {
@@ -9,14 +9,31 @@ describe("all checks useEnv", () => {
   test("read file .env.test and check return", () => {
     const envPath = path.resolve(".", "test", ".env.test");
     const spyUseEnv = jest.spyOn(lib, "useEnv");
-    lib.useEnv(envPath);
+    lib.useEnv(envPath, {
+      uuid() {
+        return [["TEST_UUID", crypto.randomUUID()]];
+      },
+      prismaConfig(
+        database: string,
+        user: string,
+        password: string,
+        port: number,
+        query: string = "?schemas=public"
+      ) {
+        return [
+          [
+            "TEST_PRISMA_DB_URL",
+            `${database}://${user}:${password}@localhost:${port}/${query}`,
+          ],
+        ];
+      },
+    });
     expect(spyUseEnv).toBeCalled();
-    expect(process.env.TEST_NUMBER).toBeTruthy();
-    expect(process.env.TEST_TEXT).toBeTruthy();
-    expect(process.env.TEST_SECRET_KEY).toBeTruthy();
-    expect(process.env.TEST_DB).toBeTruthy();
-    const fileContext = `TEST_NUMBER=${process.env.TEST_NUMBER}\nTEST_TEXT="${process.env.TEST_TEXT}"\nTEST_SECRET_KEY="${process.env.TEST_SECRET_KEY}"\nTEST_DB="${process.env.TEST_DB}"`;
-    const envFile = fs.readFileSync(envPath, { encoding: "utf-8" });
-    expect(envFile).toBe(fileContext);
+    expect(process.env.TEST_TEXT).toEqual("hello");
+    expect(process.env.TEST_NUMBER).toEqual("1001");
+    expect(process.env.TEST_UUID).toBeTruthy();
+    expect(process.env.TEST_PRISMA_DB_URL).toEqual(
+      "postgres://wallycoding:good_password@localhost:4444/?schemas=public"
+    );
   });
 });

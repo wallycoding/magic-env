@@ -1,6 +1,6 @@
 {
   "name": "magic-env",
-  "version": "1.2.6",
+  "version": "2.3.6",
   "description": "package to set environment fast",
   "main": "./lib/main.js",
   "types": "./lib/main.d.ts",
@@ -19,6 +19,7 @@
   },
   "scripts": {
     "build": "tsc",
+    "dev": "tsnd --respawn --transpile-only ./src/main.ts",
     "test": "jest --no-cache"
   },
   "repository": {
